@@ -1,0 +1,9 @@
+name = "advent_of_code"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Nicole Mazzuca"]
+maintainers = ["Nicole Mazzuca <mazzucan@outlook.com>"]
+maintainers-logins = ["strega-nil"]
+
+executables = ["advent_of_code"]
