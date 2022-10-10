@@ -5,6 +5,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Aoc_Utils; use Aoc_Utils;
 with Day_1;
 with Day_2;
+with Day_3;
 
 procedure Advent_Of_Code is
    package IO renames Ada.Text_IO;
@@ -16,7 +17,13 @@ procedure Advent_Of_Code is
    begin
       IO.Open (F, IO.In_File, File_Name);
       while not IO.End_Of_File (F) loop
-         Input_Type.Append (Result, To_Unbounded_String (IO.Get_Line (F)));
+         declare
+            Tmp : constant String := IO.Get_Line (F);
+         begin
+            if Tmp'Length /= 0 then
+               Result.Append (To_Unbounded_String (Tmp));
+            end if;
+         end;
       end loop;
       return Result;
    end Get_Input;
@@ -37,6 +44,7 @@ begin
          case Day is
             when 1 => Day_1 (Input);
             when 2 => Day_2 (Input);
+            when 3 => Day_3 (Input);
             when others => IO.Put_Line (
                "Unimplemented day: " & Natural'Image (Day));
          end case;

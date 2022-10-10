@@ -9,15 +9,15 @@ procedure Day_1 (Input : Input_Type.Vector) is
    package IO renames Ada.Text_IO;
 
    package Data_Type is new Vectors (
-      Index_Type => Natural,
-      Element_Type => Integer);
+      Index_Type => Positive,
+      Element_Type => Natural);
 
    procedure Day_1a (Data : Data_Type.Vector) is
       Last : Natural;
       Count : Natural := 0;
    begin
       Assert (Data.Length >= 2, "Data.Length >= 2");
-      Last := Data (0);
+      Last := Data.First_Element;
       for I in Data.First_Index + 1 .. Data.Last_Index loop
          declare
             Element : constant Integer := Data (I);
@@ -34,19 +34,19 @@ procedure Day_1 (Input : Input_Type.Vector) is
 
    procedure Day_1b (Data : Data_Type.Vector) is
 
-      type Window is array (0 .. 2) of Integer;
+      type Window is array (1 .. 3) of Integer;
 
       function Sum (Arr : Window) return Integer is
       begin
-         return Arr (0) + Arr (1) + Arr (2);
+         return Arr (1) + Arr (2) + Arr (3);
       end Sum;
       procedure Shift (
          Arr : in out Window;
          Element : Integer) is
       begin
-         Arr (0) := Arr (1);
          Arr (1) := Arr (2);
-         Arr (2) := Element;
+         Arr (2) := Arr (3);
+         Arr (3) := Element;
       end Shift;
 
       Last_Three : Window;
@@ -54,10 +54,10 @@ procedure Day_1 (Input : Input_Type.Vector) is
       Count : Natural := 0;
    begin
       Assert (Data.Length >= 3, "Data.Length >= 3");
-      Last_Three := (Data (0), Data (1), Data (2));
+      Last_Three := (Data (1), Data (2), Data (3));
       Current_Three := Last_Three;
 
-      for I in 3 .. Data.Last_Index loop
+      for I in 4 .. Data.Last_Index loop
          Shift (Current_Three, Data (I));
          if Sum (Current_Three) > Sum (Last_Three) then
             Count := Count + 1;

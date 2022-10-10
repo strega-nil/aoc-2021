@@ -18,7 +18,7 @@ procedure Day_2 (Input : Input_Type.Vector) is
    end record;
 
    package Data_Type is new Vectors (
-      Index_Type => Natural,
+      Index_Type => Positive,
       Element_Type => Command);
 
    procedure Day_2a (Data : Data_Type.Vector) is

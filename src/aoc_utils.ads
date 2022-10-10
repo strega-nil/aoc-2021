@@ -3,7 +3,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 package Aoc_Utils is
    package Input_Type is new Ada.Containers.Vectors (
-      Index_Type => Natural,
+      Index_Type => Positive,
       Element_Type => Unbounded_String);
 
    Assertion_Error : exception;
