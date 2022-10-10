@@ -4,6 +4,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 with Aoc_Utils; use Aoc_Utils;
 with Day_1;
+with Day_2;
 
 procedure Advent_Of_Code is
    package IO renames Ada.Text_IO;
@@ -35,6 +36,7 @@ begin
       begin
          case Day is
             when 1 => Day_1 (Input);
+            when 2 => Day_2 (Input);
             when others => IO.Put_Line (
                "Unimplemented day: " & Natural'Image (Day));
          end case;
